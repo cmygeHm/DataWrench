@@ -1,0 +1,10 @@
+<phpunit colors="true" bootstrap="./bootstrap.php">
+    <testsuites>
+        <testsuite>
+            <directory>./</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <ini name="memory_limit" value="128M" />
+    </php>
+</phpunit>
