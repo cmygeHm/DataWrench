@@ -1,12 +1,11 @@
 {
   "name": "ExampleCode",
   "require": {
-    "php": "^5.6"
+    "php": "^7.0",
+    "hamcrest/hamcrest-php": "^2.0"
   },
   "require-dev": {
-    "hamcrest/hamcrest-php": "v2.0.0",
-    "phpunit/phpunit": "v5.7.20",
-    "phpunit/php-code-coverage": "v4.0.4"
+    "phpunit/phpunit": "v6.2.2"
   },
   "autoload": {
     "psr-4": {
