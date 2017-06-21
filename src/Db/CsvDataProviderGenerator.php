@@ -2,7 +2,7 @@
 
 namespace ExampleCode\Db;
 
-class CsvDataProviderGenerator implements IDataProviderGenerator
+class CsvDataProviderGenerator implements DataProviderGenerator
 {
     const DELIMITER = ';';
 

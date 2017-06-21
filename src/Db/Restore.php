@@ -6,13 +6,13 @@ use PDO;
 
 class Restore
 {
-    /** @var IDataProviderGenerator */
+    /** @var DataProviderGenerator */
     private $generator;
 
     /** @var PDO */
     private $connection;
 
-    public function setDataProviderGenerator(IDataProviderGenerator $generator)
+    public function setDataProviderGenerator(DataProviderGenerator $generator)
     {
         $this->generator = $generator;
     }

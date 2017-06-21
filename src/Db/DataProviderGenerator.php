@@ -4,7 +4,7 @@ namespace ExampleCode\Db;
 
 use Generator;
 
-interface IDataProviderGenerator
+interface DataProviderGenerator
 {
     /**
      * @return Generator
