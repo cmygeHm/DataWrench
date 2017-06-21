@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace ExampleCode\Db;
 
@@ -12,17 +13,17 @@ class Restore
     /** @var PDO */
     private $connection;
 
-    public function setDataProviderGenerator(DataProviderGenerator $generator)
+    public function setDataProviderGenerator(DataProviderGenerator $generator) : void
     {
         $this->generator = $generator;
     }
 
-    public function setPdoConnection(PDO $connection)
+    public function setPdoConnection(PDO $connection) : void
     {
         $this->connection = $connection;
     }
 
-    public function restore()
+    public function restore() : void
     {
         $preparedStatement = $this->connection->prepare('
             INSERT INTO users (login, password)
@@ -38,9 +39,9 @@ class Restore
     }
 
     /**
-     * @return array
+     * @return string[]
      */
-    public function fetchRestored()
+    public function fetchRestored() : array
     {
         return $this->connection
             ->query('SELECT * FROM users')

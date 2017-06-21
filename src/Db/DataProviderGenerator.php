@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace ExampleCode\Db;
 
@@ -6,8 +7,7 @@ use Generator;
 
 interface DataProviderGenerator
 {
-    /**
-     * @return Generator
-     */
-    public function records();
+    public function open(string $path) : bool;
+
+    public function records() : Generator;
 }
