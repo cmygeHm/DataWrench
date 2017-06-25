@@ -38,14 +38,4 @@ class SqlWriter
             $preparedStatement->execute();
         }
     }
-
-    /**
-     * @return string[]
-     */
-    public function fetchRestored() : array
-    {
-        return $this->connection
-            ->query('SELECT * FROM users')
-            ->fetchAll(PDO::FETCH_NAMED);
-    }
 }

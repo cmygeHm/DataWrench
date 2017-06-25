@@ -26,4 +26,9 @@ $restore->setPdoConnection($sqlite);
 $restore->setDataProviderGenerator($csvDataProviderGenerator);
 
 $restore->restore();
-print_r($restore->fetchRestored());
+
+print_r(
+    $sqlite
+        ->query('SELECT * FROM users')
+        ->fetchAll(PDO::FETCH_NAMED)
+);
