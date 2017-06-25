@@ -5,7 +5,7 @@
     "hamcrest/hamcrest-php": "^2.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "v6.2.2"
+    "phpunit/phpunit": "~6.2.2"
   },
   "autoload": {
     "psr-4": {
@@ -15,7 +15,7 @@
   "autoload-dev": {
     "psr-4": {
       "ExampleCode\\": ["src/"],
-      "tests\\ExampleCode\\": ["tests/"]
+      "tests\\": ["tests/"]
     }
   }
 }
