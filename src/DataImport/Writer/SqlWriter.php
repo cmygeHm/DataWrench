@@ -6,7 +6,7 @@ namespace ExampleCode\DataImport\Writer;
 use ExampleCode\DataImport\Reader\ReaderGenerator;
 use PDO;
 
-class SqlWriter
+class SqlWriter implements Writer
 {
     /** @var ReaderGenerator */
     private $generator;
@@ -14,14 +14,14 @@ class SqlWriter
     /** @var PDO */
     private $connection;
 
-    public function setDataProviderGenerator(ReaderGenerator $generator) : void
+    public function setReader(ReaderGenerator $generator) : void
     {
         $this->generator = $generator;
     }
 
-    public function setPdoConnection(PDO $connection) : void
+    public function setOutputResource($resource) : void
     {
-        $this->connection = $connection;
+        $this->connection = $resource;
     }
 
     public function restore() : void

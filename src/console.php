@@ -16,14 +16,14 @@ $sqlite->exec('
     );
 ');
 
-$csvDataProviderGenerator = new CsvReader;
-if (!$csvDataProviderGenerator->open(__DIR__ . '/users.csv')) {
+$csvReader = new CsvReader;
+if (!$csvReader->open(__DIR__ . '/users.csv')) {
     return;
 }
 
 $restore = new SqlWriter;
-$restore->setPdoConnection($sqlite);
-$restore->setDataProviderGenerator($csvDataProviderGenerator);
+$restore->setReader($csvReader);
+$restore->setOutputResource($sqlite);
 
 $restore->restore();
 
