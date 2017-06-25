@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace ExampleCode\Db;
+namespace ExampleCode\DataImport\Reader;
 
 use Generator;
 
-class CsvDataProviderGenerator implements DataProviderGenerator
+class CsvReader implements ReaderGenerator
 {
     const DELIMITER = ';';
 

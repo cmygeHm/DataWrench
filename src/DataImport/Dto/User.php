@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace ExampleCode\Db;
+namespace ExampleCode\DataImport;
 
-class UserDto
+class User
 {
     public $login;
 

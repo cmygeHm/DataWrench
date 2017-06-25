@@ -1,19 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace ExampleCode\Db;
+namespace ExampleCode\DataImport\Writer;
 
+use ExampleCode\DataImport\Reader\ReaderGenerator;
 use PDO;
 
-class Restore
+class SqlWriter
 {
-    /** @var DataProviderGenerator */
+    /** @var ReaderGenerator */
     private $generator;
 
     /** @var PDO */
     private $connection;
 
-    public function setDataProviderGenerator(DataProviderGenerator $generator) : void
+    public function setDataProviderGenerator(ReaderGenerator $generator) : void
     {
         $this->generator = $generator;
     }

@@ -2,7 +2,7 @@
 
 namespace tests\Users;
 
-use ExampleCode\Db\Restore;
+use ExampleCode\Db\SqlWriter;
 use PHPUnit\Framework\TestCase;
 
 class RestoreTest extends TestCase
@@ -11,7 +11,7 @@ class RestoreTest extends TestCase
 
     public function setUp()
     {
-        $this->restore = new Restore;
+        $this->restore = new SqlWriter;
     }
 
     public function testRestore()
