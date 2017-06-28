@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace ExampleCode\DataImport\Writer;
 
-use ExampleCode\DataImport\Entity\Entity;
+use ExampleCode\DataImport\Entity\SqlEntity;
 use ExampleCode\DataImport\Reader\ReaderGenerator;
 use PDO;
 
@@ -15,10 +15,10 @@ class SqlWriter implements Writer
     /** @var PDO */
     private $connection;
 
-    /** @var Entity */
+    /** @var SqlEntity */
     private $entityClassName;
 
-    public function __construct($connection, Entity $entityClassName)
+    public function __construct($connection, SqlEntity $entityClassName)
     {
         $this->connection = $connection;
         $this->entityClassName = $entityClassName;

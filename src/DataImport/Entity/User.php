@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace ExampleCode\DataImport\Entity;
 
-class User extends Entity
+class User extends SqlEntity
 {
     private const FIELDS = [
         'login',

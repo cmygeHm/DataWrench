@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace ExampleCode\DataImport\Entity;
 
-abstract class Entity
+abstract class SqlEntity
 {
     abstract public static function getTableName();
 
