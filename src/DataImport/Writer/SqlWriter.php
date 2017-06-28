@@ -16,12 +16,12 @@ class SqlWriter implements Writer
     private $connection;
 
     /** @var SqlEntity */
-    private $entityClassName;
+    private $sqlEntity;
 
-    public function __construct($connection, SqlEntity $entityClassName)
+    public function __construct($connection, SqlEntity $sqlEntity)
     {
         $this->connection = $connection;
-        $this->entityClassName = $entityClassName;
+        $this->sqlEntity = $sqlEntity;
     }
 
     public function setReader(ReaderGenerator $generator) : void
@@ -35,7 +35,7 @@ class SqlWriter implements Writer
             $this->generateInsertSql()
         );
 
-        $placeholders = $this->entityClassName::getPlaceholders();
+        $placeholders = $this->sqlEntity::getPlaceholders();
         $placeholdersCount = count($placeholders);
         foreach ($this->generator->records() as $record) {
             if (count($record) < $placeholdersCount) {
@@ -57,9 +57,9 @@ class SqlWriter implements Writer
                 INSERT INTO %s (%s)
                 VALUES (%s)
             ',
-            $this->entityClassName::getTableName(),
-            $this->entityClassName::getSqlStatementFieldNames(),
-            $this->entityClassName::getSqlStatementPlaceholders()
+            $this->sqlEntity::getTableName(),
+            $this->sqlEntity::getSqlStatementFieldNames(),
+            $this->sqlEntity::getSqlStatementPlaceholders()
         );
     }
 }
