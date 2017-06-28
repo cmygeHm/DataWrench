@@ -35,8 +35,14 @@ class SqlWriter implements Writer
             $this->generateInsertSql()
         );
 
+        $placeholders = $this->entityClassName::getPlaceholders();
+        $placeholdersCount = count($placeholders);
         foreach ($this->generator->records() as $record) {
-            $toBind = array_combine($this->entityClassName::getPlaceholders(), $record);
+            if (count($record) < $placeholdersCount) {
+                // todo: log it
+                continue;
+            }
+            $toBind = array_combine($placeholders, $record);
 
             foreach ($toBind as $placeholder => $value) {
                 $preparedStatement->bindValue($placeholder, $value);
@@ -45,7 +51,7 @@ class SqlWriter implements Writer
         }
     }
 
-    private function generateInsertSql()
+    private function generateInsertSql() : string
     {
         return sprintf('
                 INSERT INTO %s (%s)
