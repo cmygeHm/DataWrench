@@ -5,11 +5,11 @@ namespace ExampleCode\DataImport\Entity;
 
 abstract class SqlEntity
 {
-    abstract public static function getTableName();
+    abstract public static function getTableName() : string;
 
-    abstract public static function getSqlStatementFieldNames();
+    abstract public static function getSqlStatementFieldNames() : string;
 
-    abstract public static function getSqlStatementPlaceholders();
+    abstract public static function getSqlStatementPlaceholders() : string;
 
-    abstract public static function getPlaceholders();
+    abstract public static function getPlaceholders() : array;
 }

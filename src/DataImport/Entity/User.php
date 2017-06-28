@@ -10,22 +10,25 @@ class User extends SqlEntity
         'password',
     ];
 
-    public static function getTableName()
+    public static function getTableName() : string
     {
         return 'users';
     }
 
-    public static function getSqlStatementFieldNames()
+    public static function getSqlStatementFieldNames() : string
     {
         return implode(', ', self::FIELDS);
     }
 
-    public static function getSqlStatementPlaceholders()
+    public static function getSqlStatementPlaceholders() : string
     {
         return implode(', ', self::getPlaceholders());
     }
 
-    public static function getPlaceholders()
+    /**
+     * @return string[]
+     */
+    public static function getPlaceholders() : array
     {
         return array_map(function(string $field) {
             return ':' . $field;
