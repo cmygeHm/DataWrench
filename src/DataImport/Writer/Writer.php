@@ -8,6 +8,4 @@ use ExampleCode\DataImport\Reader\ReaderGenerator;
 interface Writer
 {
     public function setReader(ReaderGenerator $generator) : void;
-
-    public function setOutputResource($resource) : void;
 }

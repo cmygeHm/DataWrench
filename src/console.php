@@ -1,9 +1,10 @@
 <?php
 
-namespace ExampleCode\Db;
+namespace ExampleCode;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use ExampleCode\DataImport\Entity\User;
 use ExampleCode\DataImport\Reader\CsvReader;
 use ExampleCode\DataImport\Writer\SqlWriter;
 use PDO;
@@ -21,10 +22,8 @@ if (!$csvReader->open(__DIR__ . '/users.csv')) {
     return;
 }
 
-$restore = new SqlWriter;
+$restore = new SqlWriter($sqlite, new User);
 $restore->setReader($csvReader);
-$restore->setOutputResource($sqlite);
-
 $restore->restore();
 
 print_r(
