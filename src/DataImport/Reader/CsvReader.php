@@ -20,8 +20,8 @@ class CsvReader implements ReaderGenerator
 
     public function records() : Generator
     {
-        while (($csvData = fgetcsv($this->fh)) !== false) {
-            yield str_getcsv(array_pop($csvData), self::DELIMITER);
+        while (($csvRow = fgetcsv($this->fh, $length = null, self::DELIMITER)) !== false) {
+            yield $csvRow;
         }
     }
 }
