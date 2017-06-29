@@ -38,7 +38,7 @@ class SqlWriter implements Writer
         $placeholders = $this->sqlEntity::getPlaceholders();
         $placeholdersCount = count($placeholders);
         foreach ($this->generator->records() as $record) {
-            if (count($record) < $placeholdersCount) {
+            if (count($record) != $placeholdersCount) {
                 // todo: log it
                 continue;
             }
