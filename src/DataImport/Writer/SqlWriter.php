@@ -40,6 +40,7 @@ class SqlWriter implements Writer
         foreach ($this->generator->records() as $record) {
             if (count($record) != $placeholdersCount) {
                 // todo: log it
+                // todo: протестировать все краевые случаи с количеством значений и плейсхолдеров
                 continue;
             }
             $toBind = array_combine($placeholders, $record);
