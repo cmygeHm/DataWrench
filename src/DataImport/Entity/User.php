@@ -17,12 +17,12 @@ class User extends SqlEntity
 
     public static function getSqlStatementFieldNames() : string
     {
-        return implode(', ', self::FIELDS);
+        return implode(',', self::FIELDS);
     }
 
     public static function getSqlStatementPlaceholders() : string
     {
-        return implode(', ', self::getPlaceholders());
+        return implode(',', self::getPlaceholders());
     }
 
     /**
