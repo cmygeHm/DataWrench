@@ -17,4 +17,18 @@ class UserTest extends TestCase
             'login,password'
         );
     }
+
+    /**
+     * @test
+     */
+    public function getPlaceholders()
+    {
+        $this->assertEquals(
+            User::getPlaceholders(),
+            [
+                ':login',
+                ':password',
+            ]
+        );
+    }
 }
