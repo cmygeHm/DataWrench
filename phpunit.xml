@@ -7,4 +7,11 @@
     <php>
         <ini name="memory_limit" value="128M" />
     </php>
+    <filter>
+        <whitelist
+                addUncoveredFilesFromWhitelist="true"
+                processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src/DataImport/</directory>
+        </whitelist>
+    </filter>
 </phpunit>
