@@ -21,6 +21,17 @@ class UserTest extends TestCase
     /**
      * @test
      */
+    public function getSqlStatementPlaceholders()
+    {
+        $this->assertEquals(
+            User::getSqlStatementPlaceholders(),
+            ':login,:password'
+        );
+    }
+
+    /**
+     * @test
+     */
     public function getPlaceholders()
     {
         $this->assertEquals(
