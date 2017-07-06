@@ -1,5 +1,6 @@
 {
   "name": "DataWrench",
+  "license": "PHP-3.01",
   "require": {
     "php": "^7.1"
   },
