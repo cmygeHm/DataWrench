@@ -1,6 +1,6 @@
 {
   "name": "DataWrench",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "require": {
     "php": "^7.1"
   },
