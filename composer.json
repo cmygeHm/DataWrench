@@ -11,12 +11,12 @@
   },
   "autoload": {
     "psr-4": {
-      "ExampleCode\\": ["src/"]
+      "DataWrench\\": ["src/"]
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "ExampleCode\\": ["src/"],
+      "DataWrench\\": ["src/"],
       "tests\\": ["tests/"]
     }
   }

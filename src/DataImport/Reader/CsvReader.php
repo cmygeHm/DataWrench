@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExampleCode\DataImport\Reader;
+namespace DataWrench\DataImport\Reader;
 
 use Generator;
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace ExampleCode;
+namespace DataWrench;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use ExampleCode\DataImport\Entity\User;
-use ExampleCode\DataImport\Reader\CsvReader;
-use ExampleCode\DataImport\Writer\SqlWriter;
+use DataWrench\DataImport\Entity\User;
+use DataWrench\DataImport\Reader\CsvReader;
+use DataWrench\DataImport\Writer\SqlWriter;
 use PDO;
 
 $sqlite = new PDO('sqlite::memory:');

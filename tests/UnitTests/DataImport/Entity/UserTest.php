@@ -2,7 +2,7 @@
 
 namespace tests\UnitTests\DataImport\Entity;
 
-use ExampleCode\DataImport\Entity\User;
+use DataWrench\DataImport\Entity\User;
 use PHPUnit\Framework\TestCase;
 
 class UserTest extends TestCase

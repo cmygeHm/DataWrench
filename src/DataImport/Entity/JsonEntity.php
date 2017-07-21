@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExampleCode\DataImport\Entity;
+namespace DataWrench\DataImport\Entity;
 
 abstract class JsonEntity
 {
