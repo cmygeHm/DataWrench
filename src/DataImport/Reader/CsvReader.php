@@ -15,7 +15,7 @@ class CsvReader implements ReaderGenerator
     public function open(string $path) : bool
     {
         $this->fh = fopen($path, 'r');
-        return $this->fh !== false;
+        return !!$this->fh;
     }
 
     public function records() : Generator
