@@ -16,7 +16,7 @@ class CsvReaderTest extends TestCase
     public function testOpenPathToExistingFile()
     {
         $this->assertTrue(
-            $this->csvReader->open('./CsvReaderTest/users.csv')
+            $this->csvReader->open('php://memory')
         );
     }
 
