@@ -4,10 +4,14 @@ declare(strict_types=1);
 namespace tests\UnitTests\DataImport\Entity;
 
 use DataWrench\DataImport\Reader\CsvReader;
+use DataWrench\DataImport\Reader\ReaderGenerator;
 use PHPUnit\Framework\TestCase;
 
 class CsvReaderTest extends TestCase
 {
+    /** @var ReaderGenerator */
+    private $csvReader;
+
     public function setUp()
     {
         $this->csvReader = new CsvReader();
