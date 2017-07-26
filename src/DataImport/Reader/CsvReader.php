@@ -9,6 +9,9 @@ class CsvReader implements ReaderGenerator
 {
     const DELIMITER = ';';
 
+    /** @var resource */
+    private $fh;
+
     public function open(string $path) : bool
     {
         $this->fh = fopen($path, 'r');
