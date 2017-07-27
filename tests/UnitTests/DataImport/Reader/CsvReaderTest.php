@@ -27,7 +27,7 @@ class CsvReaderTest extends TestCase
     public function testOpenNotExistingFile()
     {
         $this->assertFalse(
-            $this->csvReader->open(__DIR__ . uniqid())
+            $this->csvReader->open(uniqid())
         );
     }
 }
