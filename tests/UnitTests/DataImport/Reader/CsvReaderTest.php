@@ -33,6 +33,7 @@ class CsvReaderTest extends TestCase
 
     public function testReadCsvFile()
     {
+        $this->markTestIncomplete('Начал прикручивать виртуальный файл для тестов, пока еще в процессе');
         CsvFileBuilder::create()
             ->addLine("user name;female;24")
             ->addLine("Timue;male;30")
