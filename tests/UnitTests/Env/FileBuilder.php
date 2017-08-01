@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace tests\UnitTests\Env;
 
-class CsvFileBuilder
+class FileBuilder
 {
     private const STREAM_PROTOCOL = 'virtual';
 
@@ -35,16 +35,15 @@ class CsvFileBuilder
 
     public function build()
     {
-        $fp = fopen(self::STREAM_PROTOCOL . "://myvar", "r+");
+        $path = self::STREAM_PROTOCOL . "://myvar";
+        $fp = fopen($path, "r+");
         foreach ($this->lines as $line) {
             fwrite($fp, $line);
         }
 
         rewind($fp);
 
-        while (!feof($fp)) {
-            echo fgets($fp);
-        }
+        return $fp;
     }
 
     public function addLine(string $line) : self

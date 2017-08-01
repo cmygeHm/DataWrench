@@ -17,10 +17,8 @@ $sqlite->exec('
     );
 ');
 
-$csvReader = new CsvReader;
-if (!$csvReader->open(__DIR__ . '/users.csv')) {
-    return;
-}
+$fh = fopen(__DIR__ . '/users.csv', 'r');
+$csvReader = new CsvReader($fh);
 
 $restore = new SqlWriter($sqlite, new User);
 $restore->setReader($csvReader);

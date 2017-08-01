@@ -4,41 +4,22 @@ declare(strict_types=1);
 namespace tests\UnitTests\DataImport\Entity;
 
 use DataWrench\DataImport\Reader\CsvReader;
-use DataWrench\DataImport\Reader\ReaderGenerator;
 use PHPUnit\Framework\TestCase;
-use tests\UnitTests\Env\CsvFileBuilder;
+use tests\UnitTests\Env\FileBuilder;
+
 class CsvReaderTest extends TestCase
 {
-    /** @var ReaderGenerator */
-    private $csvReader;
-
-    public function setUp()
-    {
-        $this->csvReader = new CsvReader();
-    }
-
-    public function testOpenPathToExistingFile()
-    {
-        $this->assertTrue(
-            $this->csvReader->open('php://memory')
-        );
-    }
-
-    public function testOpenNotExistingFile()
-    {
-        $this->assertFalse(
-            $this->csvReader->open(uniqid())
-        );
-    }
-
     public function testReadCsvFile()
     {
-        $this->markTestIncomplete('Начал прикручивать виртуальный файл для тестов, пока еще в процессе');
-        CsvFileBuilder::create()
+        $fh = FileBuilder::create()
             ->addLine("user name;female;24")
-            ->addLine("Timue;male;30")
+            ->addLine("Timur;male;30")
             ->build();
 
-//        $this->csvReader->open();
+        $csvReader = new CsvReader($fh);
+        $records = iterator_to_array($csvReader->records());
+
+        $this->assertContains(['user name', 'female', 24], $records);
+        $this->assertContains(['Timur', 'male', 30], $records);
     }
 }

@@ -7,7 +7,5 @@ use Generator;
 
 interface ReaderGenerator
 {
-    public function open(string $path) : bool;
-
     public function records() : Generator;
 }

@@ -40,10 +40,11 @@ class VirtualFileWrapper
 
     public function stream_read()
     {
-        $nextEndOfLine = strpos($this->data, PHP_EOL, $this->position + 1);
-        $this->position += $nextEndOfLine;
+        $nextEndOfLine = strpos($this->data, PHP_EOL, $this->position) + strlen(PHP_EOL);
+        $result = substr($this->data, $this->position, $nextEndOfLine);
+        $this->position = $nextEndOfLine;
 
-        return substr($this->data, $this->position, $nextEndOfLine);
+        return $result;
     }
 
     public function stream_write($line)
@@ -55,7 +56,7 @@ class VirtualFileWrapper
 
     public function stream_eof()
     {
-        return $this->position == strlen($this->data);
+        return $this->position >= strlen($this->data);
     }
 
     public function stream_seek($offset, $whence = SEEK_SET)

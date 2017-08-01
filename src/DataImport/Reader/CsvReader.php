@@ -12,10 +12,9 @@ class CsvReader implements ReaderGenerator
     /** @var resource */
     private $fh;
 
-    public function open(string $path) : bool
+    public function __construct($fileHandler)
     {
-        $this->fh = fopen($path, 'r');
-        return !!$this->fh;
+        $this->fh = $fileHandler;
     }
 
     public function records() : Generator
