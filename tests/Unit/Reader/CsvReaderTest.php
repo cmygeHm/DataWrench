@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace tests\UnitTests\DataImport\Entity;
+namespace DataWrench\UnitTest\Entity;
 
-use DataWrench\DataImport\Reader\CsvReader;
+use DataWrench\Reader\CsvReader;
+use DataWrench\UnitTest\Env\FileBuilder;
 use PHPUnit\Framework\TestCase;
-use tests\UnitTests\Env\FileBuilder;
 
 class CsvReaderTest extends TestCase
 {

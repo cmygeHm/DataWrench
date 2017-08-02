@@ -4,9 +4,9 @@ namespace DataWrench;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use DataWrench\DataImport\Entity\User;
-use DataWrench\DataImport\Reader\CsvReader;
-use DataWrench\DataImport\Writer\SqlWriter;
+use DataWrench\Entity\User;
+use DataWrench\Reader\CsvReader;
+use DataWrench\Writer\SqlWriter;
 use PDO;
 
 $sqlite = new PDO('sqlite::memory:');

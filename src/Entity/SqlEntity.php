@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace DataWrench\DataImport\Entity;
+namespace DataWrench\Entity;
 
 abstract class SqlEntity
 {

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace tests\UnitTests\Env;
+namespace DataWrench\UnitTest\Env;
 
 class FileBuilder
 {

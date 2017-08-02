@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace DataWrench\DataImport\Writer;
+namespace DataWrench\Writer;
 
-use DataWrench\DataImport\Reader\ReaderGenerator;
+use DataWrench\Reader\ReaderGenerator;
 
 interface Writer
 {

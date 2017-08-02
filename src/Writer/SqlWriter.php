@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace DataWrench\DataImport\Writer;
+namespace DataWrench\Writer;
 
-use DataWrench\DataImport\Entity\SqlEntity;
-use DataWrench\DataImport\Reader\ReaderGenerator;
+use DataWrench\Entity\SqlEntity;
+use DataWrench\Reader\ReaderGenerator;
 use PDO;
 
 class SqlWriter implements Writer

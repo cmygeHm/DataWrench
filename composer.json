@@ -1,6 +1,6 @@
 {
   "name": "DataWrench",
-  "license": ["BSD", "BSD-3-Clause", "MIT", "PHP-3.01"],
+  "license": ["MIT"],
   "require": {
     "php": "^7.1"
   },
@@ -16,8 +16,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "DataWrench\\": ["src/"],
-      "tests\\": ["tests/"]
+      "DataWrench\\UnitTest\\": ["tests/Unit"],
+      "DataWrench\\IntegrationTest\\": ["tests/Integration"]
     }
   }
 }

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace tests\UnitTests\DataImport\Entity;
+namespace DataWrench\UnitTest\Entity;
 
-use DataWrench\DataImport\Entity\User;
+use DataWrench\Entity\User;
 use PHPUnit\Framework\TestCase;
 
 class UserTest extends TestCase
