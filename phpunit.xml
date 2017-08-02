@@ -6,8 +6,11 @@
         convertWarningsToExceptions="false"
     >
     <testsuites>
-        <testsuite name="UnitTests">
-            <directory>tests/UnitTests</directory>
+        <testsuite name="UnitTest">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="IntegrationTest">
+            <directory>tests/Integration</directory>
         </testsuite>
     </testsuites>
     <php>
