@@ -6,8 +6,9 @@ namespace DataWrench\Entity;
 class User extends SqlEntity
 {
     private const FIELDS = [
-        'login',
-        'password',
+        'name',
+        'sex',
+        'age',
     ];
 
     public static function getTableName() : string

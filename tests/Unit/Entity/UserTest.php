@@ -15,7 +15,7 @@ class UserTest extends TestCase
     {
         $this->assertEquals(
             User::getSqlStatementFieldNames(),
-            'login,password'
+            'name,sex,age'
         );
     }
 
@@ -26,7 +26,7 @@ class UserTest extends TestCase
     {
         $this->assertEquals(
             User::getSqlStatementPlaceholders(),
-            ':login,:password'
+            ':name,:sex,:age'
         );
     }
 
@@ -38,8 +38,9 @@ class UserTest extends TestCase
         $this->assertEquals(
             User::getPlaceholders(),
             [
-                ':login',
-                ':password',
+                ':name',
+                ':sex',
+                ':age',
             ]
         );
     }
