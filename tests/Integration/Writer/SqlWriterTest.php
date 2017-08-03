@@ -16,7 +16,7 @@ class SqlWriterTest extends TestCase
     {
         $this->sqlite = new PDO('sqlite::memory:');
     }
-    public function testSom()
+    public function testReadWrite()
     {
         $this->sqlite->exec('
             CREATE TABLE users (
