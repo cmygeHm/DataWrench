@@ -5,7 +5,7 @@ namespace DataWrench\Reader;
 
 use Generator;
 
-interface ReaderGenerator
+interface Reader
 {
-    public function records() : Generator;
+    public function read() : Generator;
 }

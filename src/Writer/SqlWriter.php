@@ -3,64 +3,54 @@ declare(strict_types=1);
 
 namespace DataWrench\Writer;
 
-use DataWrench\Entity\SqlEntity;
-use DataWrench\Reader\ReaderGenerator;
+use DataWrench\Entity\Entity;
+use DataWrench\Reader\Reader;
 use PDO;
 
 class SqlWriter implements Writer
 {
-    /** @var ReaderGenerator */
+    /** @var string */
+    private $tableName;
+
+    /** @var Reader */
     private $generator;
 
     /** @var PDO */
     private $connection;
 
-    /** @var SqlEntity */
-    private $sqlEntity;
-
-    public function __construct($connection, SqlEntity $sqlEntity)
+    public function __construct(PDO $connection, string $tableName)
     {
         $this->connection = $connection;
-        $this->sqlEntity = $sqlEntity;
+        $this->tableName = $tableName;
     }
 
-    public function setReader(ReaderGenerator $generator) : void
+    public function setReader(Reader $generator) : void
     {
         $this->generator = $generator;
     }
 
-    public function restore() : void
+    public function export() : void
     {
+        $firstEntity = $this->generator->read()->current();
         $preparedStatement = $this->connection->prepare(
-            $this->generateInsertSql()
+            $this->generateInsertSql($firstEntity)
         );
-
-        $placeholders = $this->sqlEntity::getPlaceholders();
-        $placeholdersCount = count($placeholders);
-        foreach ($this->generator->records() as $record) {
-            if (count($record) != $placeholdersCount) {
-                // todo: log it
-                // todo: протестировать все краевые случаи с количеством значений и плейсхолдеров
-                continue;
-            }
-            $toBind = array_combine($placeholders, $record);
-
-            foreach ($toBind as $placeholder => $value) {
-                $preparedStatement->bindValue($placeholder, $value);
-            }
-            $preparedStatement->execute();
+        $preparedStatement->execute($firstEntity->getValues());
+        foreach ($this->generator->read() as $entity) {
+            $preparedStatement->execute($entity->getValues());
         }
     }
 
-    private function generateInsertSql() : string
+    private function generateInsertSql(Entity $entity) : string
     {
-        return sprintf('
-                INSERT INTO %s (%s)
-                VALUES (%s)
-            ',
-            $this->sqlEntity::getTableName(),
-            $this->sqlEntity::getSqlStatementFieldNames(),
-            $this->sqlEntity::getSqlStatementPlaceholders()
+        $fieldNames = implode(', ', $entity->getFieldNames());
+        $placeholders = implode(', ', array_fill(1, count($entity->getFieldNames()), '?'));
+
+        return sprintf(
+            'INSERT INTO %s (%s) VALUES (%s)',
+            $this->tableName,
+            $fieldNames,
+            $placeholders
         );
     }
 }

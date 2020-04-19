@@ -9,3 +9,9 @@
 - [ ] Научиться читать json и xml данные из потока
 - [ ] Написать Perfomance тесты
 - [ ] Завернуть все в Docker
+
+
+docker-php-ext-install pdo pdo_mysql
+
+sudo apt-get install php-mysql
+php-sqlite3

@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace DataWrench\Writer;
 
-use DataWrench\Reader\ReaderGenerator;
+use DataWrench\Reader\Reader;
 
 interface Writer
 {
-    public function setReader(ReaderGenerator $generator) : void;
+    public function setReader(Reader $generator) : void;
 }
