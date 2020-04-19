@@ -30,5 +30,7 @@ class CsvReader implements Reader
                 $this->fieldsMap->mapSourceToDestination($csvRow)
             );
         }
+
+        fclose($this->fh);
     }
 }
