@@ -48,34 +48,6 @@ class ReadWriteTest extends TestCase
         ], $this->fetchResult());
     }
 
-    public function Json()
-    {
-        $fh = fopen(__DIR__ . '/example.json', 'r');
-        $jsonReader = new JsonReader($fh, new FieldsMap(['id', 'age', 'name', 'gender']));
-        $writer = new SqlWriter($this->sqlite, self::TABLE_NAME);
-        $writer->setReader($jsonReader);
-
-        $writer->export();
-
-//        self::assertEquals([
-//            ['name' => 'Настасья', 'sex' => 'female', 'age' => 24],
-//            ['name' => 'Timur', 'sex' => 'male', 'age' => 30],
-//        ], $this->fetchResult());
-//
-//        $stream = fopen('example.json', 'r');
-//        $listener = new SimpleObjectQueueListener(function($v) {
-//            $m = $v;
-//        });
-//        try {
-//            $parser = new \JsonStreamingParser\Parser($stream, $listener);
-//            $parser->parse();
-//            fclose($stream);
-//        } catch (Exception $e) {
-//            fclose($stream);
-//            throw $e;
-//        }
-    }
-
     private function fetchResult() : array
     {
         $stmt = $this->sqlite->prepare(sprintf(
