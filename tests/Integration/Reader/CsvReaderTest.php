@@ -8,6 +8,7 @@ use DataWrench\Entity\FieldsMap;
 use DataWrench\Reader\CsvReader;
 use DataWrench\UnitTest\Env\FileBuilder;
 use PHPUnit\Framework\TestCase;
+use TypeError;
 
 class CsvReaderTest extends TestCase
 {
@@ -33,5 +34,41 @@ class CsvReaderTest extends TestCase
                 'age' => '30',
             ])
         ], $records);
+    }
+
+    public function testException()
+    {
+        $this->expectException(\TypeError::class);
+
+        $fh = FileBuilder::create()
+            ->addLine("Timur;male;30")
+            ->build();
+
+        $invalidFieldsMap = $this->createMock(FieldsMap::class);
+        $invalidFieldsMap->method('mapSourceToDestination')
+            ->willReturn(null);
+
+        $csvReader = new CsvReader($fh, $invalidFieldsMap);
+        $csvReader->read()->current();
+    }
+
+    public function testClosingFileHandlerOnException()
+    {
+        $fh = FileBuilder::create()
+            ->addLine("Timur;male;30")
+            ->build();
+
+        $invalidFieldsMap = $this->createMock(FieldsMap::class);
+        $invalidFieldsMap->method('mapSourceToDestination')
+            ->willReturn(null);
+
+        $csvReader = new CsvReader($fh, $invalidFieldsMap);
+        try {
+            $csvReader->read()->current();
+        } catch (TypeError $e) {
+            // nothing
+        }
+
+        $this->assertFalse(is_resource($fh));
     }
 }

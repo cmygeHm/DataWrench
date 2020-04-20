@@ -25,10 +25,15 @@ class CsvReader implements Reader
 
     public function read() : Generator
     {
-        while (($csvRow = fgetcsv($this->fh, $length = null, self::DELIMITER)) !== false) {
-            yield Entity::create(
-                $this->fieldsMap->mapSourceToDestination($csvRow)
-            );
+        try {
+            while (($csvRow = fgetcsv($this->fh, $length = null, self::DELIMITER)) !== false) {
+                yield Entity::create(
+                    $this->fieldsMap->mapSourceToDestination($csvRow)
+                );
+            }
+        } catch (\Throwable $e) {
+            fclose($this->fh);
+            throw $e;
         }
 
         fclose($this->fh);
