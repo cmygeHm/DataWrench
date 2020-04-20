@@ -14,13 +14,10 @@ class CsvReaderTest extends TestCase
 {
     public function testReadCsvFile()
     {
-        $fh = FileBuilder::create()
-            ->addLine("Lady Gaga;female;24")
-            ->addLine("Timur;male;30")
-            ->build();
+        $fh = $this->givenCsvFileHandler();
 
         $csvReader = new CsvReader($fh, new FieldsMap(['name', 'sex', 'age']));
-        $records = iterator_to_array($csvReader->read());
+        $actual = iterator_to_array($csvReader->read());
 
         $this->assertEquals([
             new Entity([
@@ -33,16 +30,14 @@ class CsvReaderTest extends TestCase
                 'sex' => 'male',
                 'age' => '30',
             ])
-        ], $records);
+        ], $actual);
     }
 
     public function testException()
     {
         $this->expectException(\TypeError::class);
 
-        $fh = FileBuilder::create()
-            ->addLine("Timur;male;30")
-            ->build();
+        $fh = $this->givenCsvFileHandler();
 
         $invalidFieldsMap = $this->createMock(FieldsMap::class);
         $invalidFieldsMap->method('mapSourceToDestination')
@@ -54,9 +49,7 @@ class CsvReaderTest extends TestCase
 
     public function testClosingFileHandlerOnException()
     {
-        $fh = FileBuilder::create()
-            ->addLine("Timur;male;30")
-            ->build();
+        $fh = $this->givenCsvFileHandler();
 
         $invalidFieldsMap = $this->createMock(FieldsMap::class);
         $invalidFieldsMap->method('mapSourceToDestination')
@@ -70,5 +63,16 @@ class CsvReaderTest extends TestCase
         }
 
         $this->assertFalse(is_resource($fh));
+    }
+
+    /**
+     * @return bool|resource
+     */
+    private function givenCsvFileHandler()
+    {
+        return FileBuilder::create()
+            ->addLine("Lady Gaga;female;24")
+            ->addLine("Timur;male;30")
+            ->build();
     }
 }
